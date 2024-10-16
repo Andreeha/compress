@@ -11,6 +11,11 @@ else
   FOLDERPATH=$(readlink -f $1)
 fi
 
+if [ ! -d "$FOLDERPATH" ]; then
+  echo "ERROR: FOLDER \`$FOLDERPATH' NOT FOUND"
+  exit
+fi
+
 if [ -z "$2" ]; then
   PERCENTAGE_THRESHOLD=70
 else

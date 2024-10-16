@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# Add check if the default tmp_folder_path is accessible
+BIMODE=
 
 if [ -z "$1" ]; then
   echo "ERROR: NO FOLDER_PATH SPECIFIED"
@@ -23,9 +23,12 @@ else
   TMPNAME=$3
 fi
 
-MB=1048576
-
-THRESHOLD=$((1024*$MB))
+if [ ! -z "$BIMODE" ]; then
+  MB=1048576
+  THRESHOLD=$((1024*$MB))
+else
+  THRESHOLD=1000000000
+fi
 
 BACKUPNAME="BACKUP.tar.gz"
 
